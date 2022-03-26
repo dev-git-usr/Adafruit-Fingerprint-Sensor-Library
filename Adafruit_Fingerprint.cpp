@@ -146,10 +146,7 @@ uint8_t Adafruit_Fingerprint::checkPassword(void) {
   GET_CMD_PACKET(FINGERPRINT_VERIFYPASSWORD, (uint8_t)(thePassword >> 24),
                  (uint8_t)(thePassword >> 16), (uint8_t)(thePassword >> 8),
                  (uint8_t)(thePassword & 0xFF));
-  if (packet.data[0] == FINGERPRINT_OK)
-    return FINGERPRINT_OK;
-  else
-    return FINGERPRINT_PACKETRECIEVEERR;
+  return packet.data[0];
 }
 
 /**************************************************************************/
