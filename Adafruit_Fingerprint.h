@@ -87,7 +87,10 @@
 #define FINGERPRINT_LED_RED 0x01         //!< Red LED
 #define FINGERPRINT_LED_BLUE 0x02        //!< Blue LED
 #define FINGERPRINT_LED_PURPLE 0x03      //!< Purple LED
-
+#define FINGERPRINT_LED_GREEN 0x04       //!< Green LED
+#define FINGERPRINT_LED_YELLOW 0x05      //!< Yellow LED
+#define FINGERPRINT_LED_TURQOISE 0x06    //!< Turqoise LED
+#define FINGERPRINT_LED_WHITE 0x07       //!< White LED
 //#define FINGERPRINT_DEBUG
 
 #define DEFAULTTIMEOUT 1000 //!< UART reading timeout in milliseconds
