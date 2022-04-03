@@ -265,6 +265,29 @@ uint8_t Adafruit_Fingerprint::getModel(void) {
 
 /**************************************************************************/
 /*!
+    @brief   Ask the sensor to transfer 256-byte fingerprint template from the
+   buffer to the UART
+    @returns <code>FINGERPRINT_OK</code> on success
+    @returns <code>FINGERPRINT_PACKETRECIEVEERR</code> on communication error
+*/
+uint8_t Adafruit_Fingerprint::downloadModel(uint8_t packet_1[], uint8_t packet_2[], uint8_t slot) {
+  uint8_t packet[] = {FINGERPRINT_DOWNLOAD, slot};
+  writePacket(theAddress, FINGERPRINT_COMMANDPACKET, sizeof(packet)+2, packet);
+  uint8_t len = getReply(recvPacket);
+  
+  if ((len != 1) && (recvPacket[0] != FINGERPRINT_ACKPACKET))
+   return -1;
+  if (recvPacket[1] == 0x00) {
+    writePacket(theAddress, FINGERPRINT_DATAPACKET, 130, packet_1);
+    writePacket(theAddress, FINGERPRINT_DATAPACKET, 130, packet_2);
+    return recvPacket[1];
+  } else {
+    return recvPacket[1];
+  }
+}
+
+/**************************************************************************/
+/*!
     @brief   Ask the sensor to delete a model in memory
     @param   location The model location #
     @returns <code>FINGERPRINT_OK</code> on success
