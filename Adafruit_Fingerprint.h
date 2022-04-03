@@ -151,7 +151,7 @@ public:
   uint8_t loadModel(uint16_t id);
   uint8_t getModel(void);
   uint8_t deleteModel(uint16_t id);
-  uint8_t downloadModel(uint8_t packet_1[], uint8_t packet_2[], uint8_t slot) 
+  uint8_t downloadModel(uint8_t packet_1[], uint8_t packet_2[], uint8_t slot);
   uint8_t fingerFastSearch(void);
   uint8_t fingerSearch(uint8_t slot = 1);
   uint8_t getTemplateCount(void);
